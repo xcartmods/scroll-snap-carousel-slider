@@ -130,11 +130,12 @@ document.querySelectorAll('.ss-carousel').forEach(function (carousel) {
                 // Last item reached. Go back to first item by setting scroll position to 0
                 ssCarouselInner.scrollTo({left: 0, top: 0, behavior:'smooth'});
 
-			}
+            }
 
         }
 
         function scrollToPrevItem() {
+
             if(ssCarouselInner.scrollLeft != 0) {
 
                 // The scroll position is not at the beginning of first item
@@ -145,7 +146,7 @@ document.querySelectorAll('.ss-carousel').forEach(function (carousel) {
                 // This is the first item. Go to last item by setting scroll position to ssCarouselInner width
                 ssCarouselInner.scrollTo({left: ssCarouselInner.scrollWidth, top: 0, behavior:'smooth'});
 
-			}
+            }
 
         }
 
