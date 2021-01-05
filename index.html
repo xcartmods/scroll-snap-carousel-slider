@@ -113,8 +113,8 @@
 document.querySelectorAll('.ss-carousel').forEach(function (carousel) {
 
         var ssCarouselInner = carousel.querySelector('.ss-carousel-inner');
-        var prevCell = carousel.querySelector('.btn.prev-cell');
-        var nextCell = carousel.querySelector('.btn.next-cell');
+        var prevCell = carousel.querySelector('.prev-cell');
+        var nextCell = carousel.querySelector('.next-cell');
         var cellWidth = carousel.querySelector('.ss-carousel-cell').clientWidth;
 
         nextCell.addEventListener('click', scrollToNextItem);
