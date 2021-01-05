@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SCROLL-SNAP CAROUSEL</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+.ss-carousel {
+    max-width: 100%;
+    padding: 1rem;
+    margin: 0 0 1rem 0;
+    text-align: center;
+    position: relative;
+}
+
+.ss-carousel .ss-carousel-inner {
+    overflow-x: scroll;
+    display: flex;
+    scroll-snap-type: x mandatory;
+}
+
+.ss-carousel .ss-carousel-cell {
+    min-width: 25%;
+    scroll-snap-align: center; /* start | end | center */
+    background-color: white;
+    margin: 1rem 0;
+    padding: 0 1rem;
+}
+
+.ss-carousel .prev-cell,
+.ss-carousel .next-cell {
+    position: absolute;
+    top: 50%;
+	transform: translateY(-50%); 
+    z-index: 2;
+	border-radius: 50%;
+}
+
+.ss-carousel .prev-cell {
+    left: 15px;
+}
+
+.ss-carousel .next-cell {
+    right: 15px;
+}
+
+@media screen and (min-width: 992px) {
+    .ss-carousel .ss-carousel-cell { min-width: 25%; }
+}
+
+@media screen and (max-width: 991px) {
+    .ss-carousel .ss-carousel-cell { min-width: 33.33%; }
+}
+
+@media screen and (max-width: 767px) {
+    .ss-carousel .ss-carousel-cell { min-width: 50%; }
+}
+
+@media screen and (max-width: 575px) {
+    .ss-carousel .ss-carousel-cell { min-width: 100%; }
+}
+
+</style>
+
+
+</head>
+<body>
+<div class="container mt-5">
+
+
+    <div class="ss-carousel">
+        <div class="ss-carousel-inner">
+            <div class="ss-carousel-cell"><div class="card bg-light shadow-sm"><p class="p-5 mb-0">1</p></div></div>
+            <div class="ss-carousel-cell"><div class="card bg-light shadow-sm"><p class="p-5 mb-0">2</p></div></div>
+            <div class="ss-carousel-cell"><div class="card bg-light shadow-sm"><p class="p-5 mb-0">3</p></div></div>
+            <div class="ss-carousel-cell"><div class="card bg-light shadow-sm"><p class="p-5 mb-0">4</p></div></div>
+            <div class="ss-carousel-cell"><div class="card bg-light shadow-sm"><p class="p-5 mb-0">5</p></div></div>
+            <div class="ss-carousel-cell"><div class="card bg-light shadow-sm"><p class="p-5 mb-0">6</p></div></div>
+        </div>
+        <span class="btn btn-primary prev-cell">&larr;</span>
+        <span class="btn btn-primary next-cell">&rarr;</span>
+    </div>
+
+
+
+    <div class="ss-carousel">
+        <div class="ss-carousel-inner">
+            <div class="ss-carousel-cell"><div class="card bg-light shadow-sm"><p class="p-5 mb-0">1</p></div></div>
+            <div class="ss-carousel-cell"><div class="card bg-light shadow-sm"><p class="p-5 mb-0">2</p></div></div>
+            <div class="ss-carousel-cell"><div class="card bg-light shadow-sm"><p class="p-5 mb-0">3</p></div></div>
+            <div class="ss-carousel-cell"><div class="card bg-light shadow-sm"><p class="p-5 mb-0">4</p></div></div>
+            <div class="ss-carousel-cell"><div class="card bg-light shadow-sm"><p class="p-5 mb-0">5</p></div></div>
+            <div class="ss-carousel-cell"><div class="card bg-light shadow-sm"><p class="p-5 mb-0">6</p></div></div>
+        </div>
+        <span class="btn btn-primary prev-cell">&larr;</span>
+        <span class="btn btn-primary next-cell">&rarr;</span>
+    </div>
+
+
+
+</div>
+
+
+
+<script>
+
+document.querySelectorAll('.ss-carousel').forEach(function (carousel) {
+
+        var ssCarouselInner = carousel.querySelector('.ss-carousel-inner');
+        var prevCell = carousel.querySelector('.btn.prev-cell');
+        var nextCell = carousel.querySelector('.btn.next-cell');
+        var cellWidth = carousel.querySelector('.ss-carousel-cell').clientWidth;
+
+        nextCell.addEventListener('click', scrollToNextItem);
+        prevCell.addEventListener('click', scrollToPrevItem);
+
+        function scrollToNextItem() {
+
+            if(ssCarouselInner.scrollLeft < (ssCarouselInner.scrollWidth - cellWidth)) {
+
+                // The scroll position is not at the beginning of last item
+                ssCarouselInner.scrollBy({left: cellWidth, top: 0, behavior:'smooth'});
+
+            } else {
+
+                // Last item reached. Go back to first item by setting scroll position to 0
+                ssCarouselInner.scrollTo({left: 0, top: 0, behavior:'smooth'});
+
+			}
+
+        }
+
+        function scrollToPrevItem() {
+            if(ssCarouselInner.scrollLeft != 0) {
+
+                // The scroll position is not at the beginning of first item
+                ssCarouselInner.scrollBy({left: -cellWidth, top: 0, behavior:'smooth'});
+
+            } else {
+
+                // This is the first item. Go to last item by setting scroll position to ssCarouselInner width
+                ssCarouselInner.scrollTo({left: ssCarouselInner.scrollWidth, top: 0, behavior:'smooth'});
+
+			}
+
+        }
+
+});
+
+</script>
+
+</body>
+</html>
