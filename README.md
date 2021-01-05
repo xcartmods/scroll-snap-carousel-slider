@@ -2,7 +2,7 @@
 
 Doesn't get much simpler.
 
-TODO: show/hide prev/next buttons depending on scroll.
+TODO: show/hide prev/next buttons depending on scroll position.
 
 https://xcartmods.com/ss/
 
