@@ -128,10 +128,10 @@ document.querySelectorAll('.ss-carousel').forEach(function (carousel) {
         var nextCell = carousel.querySelector('.next-cell');
         var cellWidth = carousel.querySelector('.ss-carousel-cell').clientWidth;
 
-        nextCell.addEventListener('click', scrollToNextItem);
-        prevCell.addEventListener('click', scrollToPrevItem);
+        nextCell.addEventListener('click', scrollToNextCell);
+        prevCell.addEventListener('click', scrollToPrevCell);
 
-        function scrollToNextItem() {
+        function scrollToNextCell() {
 
             if(ssCarouselInner.scrollLeft < (ssCarouselInner.scrollWidth - cellWidth)) {
 
@@ -147,7 +147,7 @@ document.querySelectorAll('.ss-carousel').forEach(function (carousel) {
 
         }
 
-        function scrollToPrevItem() {
+        function scrollToPrevCell() {
 
             if(ssCarouselInner.scrollLeft != 0) {
 
