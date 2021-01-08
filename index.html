@@ -21,6 +21,7 @@
     overflow-x: scroll;
     display: flex;
     scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
 }
 
 .ss-carousel .ss-carousel-cell {
@@ -35,11 +36,11 @@
 .ss-carousel .next-cell {
     position: absolute;
     top: 50%;
-	transform: translateY(-50%); 
+    transform: translateY(-50%); 
     z-index: 2;
-	border-radius: 50%;
-	width: 40px;
-	height: 40px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
 }
 
 .ss-carousel .prev-cell {
