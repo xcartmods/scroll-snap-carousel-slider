@@ -240,7 +240,7 @@ document.querySelectorAll('.ss-carousel').forEach(function(carousel) {
     if(isTouchDevice()===false) {
 
         // Hide Scrollbar
-        $('.ss-carousel .ss-carousel-inner').addClass('hide-scrollbar');
+		ssCarouselInner.classList.add('hide-scrollbar');
 
         // Touchswipe
         $(ssCarouselInner).swipe({
@@ -263,7 +263,7 @@ document.querySelectorAll('.ss-carousel').forEach(function(carousel) {
     } else {
 
         // Show Scrollbar
-        $('.ss-carousel .ss-carousel-inner').removeClass('hide-scrollbar');
+		ssCarouselInner.classList.remove('hide-scrollbar');
 
     };
 
