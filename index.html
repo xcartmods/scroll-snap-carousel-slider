@@ -92,7 +92,9 @@
 
 /* Hide Scrollbar */
 
-.ss-carousel .ss-carousel-inner { overflow-x: hidden; }
+@media screen and (min-width: 992px) {
+    .ss-carousel .ss-carousel-inner.hide-scrollbar { overflow-x: hidden; }
+}
 
 </style>
 
@@ -123,9 +125,9 @@
 
     <div class="ss-carousel ss-slider">
         <div class="ss-carousel-inner">
-            <div class="ss-carousel-cell"><div class="card rounded-0 border-0 bg-dark text-light shadow-sm ratio ratio-21x9"><h2 class="p-5 mb-0">1</h2></div></div>
-            <div class="ss-carousel-cell"><div class="card rounded-0 border-0 bg-dark text-light shadow-sm ratio ratio-21x9"><h2 class="p-5 mb-0">2</h2></div></div>
-            <div class="ss-carousel-cell"><div class="card rounded-0 border-0 bg-dark text-light shadow-sm ratio ratio-21x9"><h2 class="p-5 mb-0">3</h2></div></div>
+            <div class="ss-carousel-cell"><div class="card rounded-0 border-0 bg-dark text-light shadow-sm ratio ratio-21x9"><h2 class="display-4 p-5 mb-0">Slide 1</h2></div></div>
+            <div class="ss-carousel-cell"><div class="card rounded-0 border-0 bg-dark text-light shadow-sm ratio ratio-21x9"><h2 class="display-4 p-5 mb-0">Slide 2</h2></div></div>
+            <div class="ss-carousel-cell"><div class="card rounded-0 border-0 bg-dark text-light shadow-sm ratio ratio-21x9"><h2 class="display-4 p-5 mb-0">Slide 3</h2></div></div>
         </div>
         <div class="btn btn-light border-0 shadow-sm prev-cell">&lt;</div>
         <div class="btn btn-light border-0 shadow-sm next-cell">&gt;</div>
@@ -137,6 +139,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
 
 <script>
+
+function isTouchDevice(){
+    return true == ("ontouchstart" in window || window.DocumentTouch && document instanceof DocumentTouch);
+}
 
 document.querySelectorAll('.ss-carousel').forEach(function(carousel) {
 
@@ -196,8 +202,12 @@ document.querySelectorAll('.ss-carousel').forEach(function(carousel) {
 
     }
 
-    // Touchswipe
+    if(isTouchDevice()===false) {
 
+    // Hide Scrollbar
+    $('.ss-carousel .ss-carousel-inner').addClass('hide-scrollbar');
+
+    // Touchswipe
     $(ssCarouselInner).swipe({
         swipeLeft: function(event, direction, distance, duration, fingerCount) {
             ssCarouselInner.scrollBy({
@@ -214,6 +224,12 @@ document.querySelectorAll('.ss-carousel').forEach(function(carousel) {
             });
         }
     });
+
+	} else {
+
+		$('.ss-carousel .ss-carousel-inner').removeClass('hide-scrollbar');
+
+    };
 
 });
 
