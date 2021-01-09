@@ -2,6 +2,6 @@
 
 Doesn't get much simpler.
 
-Uses Touchswipe on desktops.
+Uses TouchSwipe on desktops.
 
 https://xcartmods.com/ss/
