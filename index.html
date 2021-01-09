@@ -27,7 +27,7 @@
 .ss-carousel .ss-carousel-cell {
     min-width: 25%;
     scroll-snap-align: start; /* start | center | end */
-    background-color: white;
+    background-color: #fff;
     margin: 1rem 0;
     padding: 0 1rem;
 }
@@ -67,7 +67,28 @@
     .ss-carousel .ss-carousel-cell { min-width: 100%; }
 }
 
-.ss-carousel.ss-slider .ss-carousel-cell { min-width: 100%; }
+/* Slider */
+    
+.ss-carousel.ss-slider .ss-carousel-cell {
+    min-width: 100%;
+    padding: 0;
+}
+
+.ss-carousel.ss-slider .prev-cell {
+    border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.ss-carousel.ss-slider .next-cell {
+    border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.ss-carousel.ss-slider .prev-cell {
+    left: 16px;
+}
+
+.ss-carousel.ss-slider .next-cell {
+    right: 16px;
+}
 
 </style>
 
@@ -101,12 +122,12 @@
 
     <div class="ss-carousel ss-slider">
         <div class="ss-carousel-inner">
-            <div class="ss-carousel-cell"><div class="card bg-dark text-light shadow-sm ratio ratio-21x9"><h2 class="p-5 mb-0">1</h2></div></div>
-            <div class="ss-carousel-cell"><div class="card bg-dark text-light shadow-sm ratio ratio-21x9"><h2 class="p-5 mb-0">2</h2></div></div>
-            <div class="ss-carousel-cell"><div class="card bg-dark text-light shadow-sm ratio ratio-21x9"><h2 class="p-5 mb-0">3</h2></div></div>
+            <div class="ss-carousel-cell"><div class="card rounded-0 border-0 bg-dark text-light shadow-sm ratio ratio-21x9"><h2 class="p-5 mb-0">1</h2></div></div>
+            <div class="ss-carousel-cell"><div class="card rounded-0 border-0 bg-dark text-light shadow-sm ratio ratio-21x9"><h2 class="p-5 mb-0">2</h2></div></div>
+            <div class="ss-carousel-cell"><div class="card rounded-0 border-0 bg-dark text-light shadow-sm ratio ratio-21x9"><h2 class="p-5 mb-0">3</h2></div></div>
         </div>
-        <div class="btn btn-light border shadow-sm prev-cell">&larr;</div>
-        <div class="btn btn-light border shadow-sm next-cell">&rarr;</div>
+        <div class="btn btn-light border-0 shadow-sm prev-cell">&lt;</div>
+        <div class="btn btn-light border-0 shadow-sm next-cell">&gt;</div>
     </div>
 
 
