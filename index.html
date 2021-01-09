@@ -119,8 +119,6 @@
         <div class="btn btn-light border shadow-sm next-cell">&gt;</div>
     </div>
 
-
-
     <div class="ss-carousel ss-slider">
         <div class="ss-carousel-inner">
             <div class="ss-carousel-cell"><div class="card rounded-0 border-0 bg-dark text-light shadow-sm ratio ratio-21x9"><h2 class="display-4 p-5 mb-0">Slide 1</h2></div></div>
@@ -153,75 +151,63 @@ document.querySelectorAll('.ss-carousel').forEach(function(carousel) {
     prevCell.addEventListener('click', scrollToPrevCell);
 
     function scrollToNextCell() {
-
         if (ssCarouselInner.scrollLeft < (ssCarouselInner.scrollWidth - cellWidth)) {
-
             // The scroll position is not at the beginning of last item
             ssCarouselInner.scrollBy({
                 left: cellWidth,
                 top: 0,
                 behavior: 'smooth'
             });
-
         } else {
-
             // Last item reached. Go back to first item by setting scroll position to 0
             ssCarouselInner.scrollTo({
                 left: 0,
                 top: 0,
                 behavior: 'smooth'
             });
-
         }
-
     }
 
     function scrollToPrevCell() {
-
         if (ssCarouselInner.scrollLeft != 0) {
-
             // The scroll position is not at the beginning of first item
             ssCarouselInner.scrollBy({
                 left: -cellWidth,
                 top: 0,
                 behavior: 'smooth'
             });
-
         } else {
-
             // This is the first item. Go to last item by setting scroll position to ssCarouselInner width
             ssCarouselInner.scrollTo({
                 left: ssCarouselInner.scrollWidth,
                 top: 0,
                 behavior: 'smooth'
             });
-
         }
-
     }
 
     if(isTouchDevice()===false) {
 
-    // Hide Scrollbar
-    $('.ss-carousel .ss-carousel-inner').addClass('hide-scrollbar');
+        // Hide Scrollbar
+        $('.ss-carousel .ss-carousel-inner').addClass('hide-scrollbar');
 
-    // Touchswipe
-    $(ssCarouselInner).swipe({
-        swipeLeft: function(event, direction, distance, duration, fingerCount) {
-            ssCarouselInner.scrollBy({
-                left: cellWidth,
-                top: 0,
-                behavior: 'smooth'
-            });
-        },
-        swipeRight: function() {
-            ssCarouselInner.scrollBy({
-                left: -cellWidth,
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-    });
+        // Touchswipe
+        $(ssCarouselInner).swipe({
+            swipeLeft: function(event, direction, distance, duration, fingerCount) {
+                ssCarouselInner.scrollBy({
+                    left: cellWidth,
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            },
+            swipeRight: function() {
+                ssCarouselInner.scrollBy({
+                    left: -cellWidth,
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+        });
 
     } else {
 
