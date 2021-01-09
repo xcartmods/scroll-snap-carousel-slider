@@ -92,9 +92,7 @@
 
 /* Hide Scrollbar */
 
-@media screen and (min-width: 992px) {
-    .ss-carousel .ss-carousel-inner.hide-scrollbar { overflow-x: hidden; }
-}
+.ss-carousel .ss-carousel-inner.hide-scrollbar { overflow-x: hidden; }
 
 </style>
 
@@ -225,9 +223,10 @@ document.querySelectorAll('.ss-carousel').forEach(function(carousel) {
         }
     });
 
-	} else {
+    } else {
 
-		$('.ss-carousel .ss-carousel-inner').removeClass('hide-scrollbar');
+        // Show Scrollbar
+        $('.ss-carousel .ss-carousel-inner').removeClass('hide-scrollbar');
 
     };
 
