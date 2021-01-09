@@ -134,51 +134,87 @@
 
 </div>
 
-
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
 
 <script>
 
-document.querySelectorAll('.ss-carousel').forEach(function (carousel) {
+document.querySelectorAll('.ss-carousel').forEach(function(carousel) {
 
-        var ssCarouselInner = carousel.querySelector('.ss-carousel-inner');
-        var prevCell = carousel.querySelector('.prev-cell');
-        var nextCell = carousel.querySelector('.next-cell');
-        var cellWidth = carousel.querySelector('.ss-carousel-cell').clientWidth;
+    var ssCarouselInner = carousel.querySelector('.ss-carousel-inner');
+    var prevCell = carousel.querySelector('.prev-cell');
+    var nextCell = carousel.querySelector('.next-cell');
+    var cellWidth = carousel.querySelector('.ss-carousel-cell').clientWidth;
 
-        nextCell.addEventListener('click', scrollToNextCell);
-        prevCell.addEventListener('click', scrollToPrevCell);
+    nextCell.addEventListener('click', scrollToNextCell);
+    prevCell.addEventListener('click', scrollToPrevCell);
 
-        function scrollToNextCell() {
+    function scrollToNextCell() {
 
-            if(ssCarouselInner.scrollLeft < (ssCarouselInner.scrollWidth - cellWidth)) {
+        if (ssCarouselInner.scrollLeft < (ssCarouselInner.scrollWidth - cellWidth)) {
 
-                // The scroll position is not at the beginning of last item
-                ssCarouselInner.scrollBy({left: cellWidth, top: 0, behavior:'smooth'});
+            // The scroll position is not at the beginning of last item
+            ssCarouselInner.scrollBy({
+                left: cellWidth,
+                top: 0,
+                behavior: 'smooth'
+            });
 
-            } else {
+        } else {
 
-                // Last item reached. Go back to first item by setting scroll position to 0
-                ssCarouselInner.scrollTo({left: 0, top: 0, behavior:'smooth'});
+            // Last item reached. Go back to first item by setting scroll position to 0
+            ssCarouselInner.scrollTo({
+                left: 0,
+                top: 0,
+                behavior: 'smooth'
+            });
 
-            }
+        }
+
+    }
+
+    function scrollToPrevCell() {
+
+        if (ssCarouselInner.scrollLeft != 0) {
+
+            // The scroll position is not at the beginning of first item
+            ssCarouselInner.scrollBy({
+                left: -cellWidth,
+                top: 0,
+                behavior: 'smooth'
+            });
+
+        } else {
+
+            // This is the first item. Go to last item by setting scroll position to ssCarouselInner width
+            ssCarouselInner.scrollTo({
+                left: ssCarouselInner.scrollWidth,
+                top: 0,
+                behavior: 'smooth'
+            });
 
         }
 
-        function scrollToPrevCell() {
+    }
 
-            if(ssCarouselInner.scrollLeft != 0) {
+    // Touchswipe
 
-                // The scroll position is not at the beginning of first item
-                ssCarouselInner.scrollBy({left: -cellWidth, top: 0, behavior:'smooth'});
-
-            } else {
-
-                // This is the first item. Go to last item by setting scroll position to ssCarouselInner width
-                ssCarouselInner.scrollTo({left: ssCarouselInner.scrollWidth, top: 0, behavior:'smooth'});
-
-            }
-
+    $(ssCarouselInner).swipe({
+        swipeLeft: function(event, direction, distance, duration, fingerCount) {
+            ssCarouselInner.scrollBy({
+                left: cellWidth,
+                top: 0,
+                behavior: 'smooth'
+            });
+        },
+        swipeRight: function() {
+            ssCarouselInner.scrollBy({
+                left: -cellWidth,
+                top: 0,
+                behavior: 'smooth'
+            });
         }
+    });
 
 });
 
