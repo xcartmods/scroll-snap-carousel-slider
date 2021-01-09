@@ -84,6 +84,7 @@
     border-radius: 50%;
     width: 40px;
     height: 40px;
+	font-size: 0.85rem;
 }
 
 .ss-carousel .prev-cell {
@@ -127,10 +128,12 @@
 
 .ss-carousel.ss-slider .prev-cell {
     border-radius: 0 0.5rem 0.5rem 0;
+	font-size: 1rem;
 }
 
 .ss-carousel.ss-slider .next-cell {
     border-radius: 0.5rem 0 0 0.5rem;
+	font-size: 1rem;
 }
 
 .ss-carousel.ss-slider .prev-cell {
@@ -166,8 +169,16 @@
             <div class="ss-carousel-cell"><div class="card bg-light shadow-sm"><h2 class="p-5 mb-0">9</h2></div></div>
             <div class="ss-carousel-cell"><div class="card bg-light shadow-sm"><h2 class="p-5 mb-0">10</h2></div></div>
         </div>
-        <div class="btn btn-light border shadow-sm prev-cell">&lt;</div>
-        <div class="btn btn-light border shadow-sm next-cell">&gt;</div>
+        <div class="btn btn-light border shadow-sm prev-cell">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+          <path d="M3.86 8.753l5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+        </svg>
+        </div>
+        <div class="btn btn-light border shadow-sm next-cell">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+          <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+        </svg>
+        </div>
     </div>
 
     <div class="ss-carousel ss-slider">
@@ -178,8 +189,16 @@
             <div class="ss-carousel-cell"><div class="card rounded-0 border-0 bg-dark text-light shadow-sm ratio ratio-21x9"><h2 class="display-4 p-5 mb-0">Slide 4</h2></div></div>
             <div class="ss-carousel-cell"><div class="card rounded-0 border-0 bg-dark text-light shadow-sm ratio ratio-21x9"><h2 class="display-4 p-5 mb-0">Slide 5</h2></div></div>
         </div>
-        <div class="btn btn-light border-0 shadow-sm prev-cell">&lt;</div>
-        <div class="btn btn-light border-0 shadow-sm next-cell">&gt;</div>
+        <div class="btn btn-light border-0 shadow-sm prev-cell">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+          <path d="M3.86 8.753l5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+        </svg>
+        </div>
+        <div class="btn btn-light border-0 shadow-sm next-cell">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+          <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+        </svg>
+        </div>
     </div>
 
 </div>
@@ -191,86 +210,84 @@
 
 "use strict";
 
-function isTouchDevice(){
-    return true == ("ontouchstart" in window || window.DocumentTouch && document instanceof DocumentTouch);
+function isTouchDevice() {
+  return (
+    true ==
+    ("ontouchstart" in window ||
+      (window.DocumentTouch && document instanceof DocumentTouch))
+  );
 }
 
-document.querySelectorAll('.ss-carousel').forEach(function(carousel) {
+document.querySelectorAll(".ss-carousel").forEach(function (carousel) {
+  var ssCarouselInner = carousel.querySelector(".ss-carousel-inner");
+  var prevCell = carousel.querySelector(".prev-cell");
+  var nextCell = carousel.querySelector(".next-cell");
+  var cellWidth = carousel.querySelector(".ss-carousel-cell").clientWidth;
 
-    var ssCarouselInner = carousel.querySelector('.ss-carousel-inner');
-    var prevCell = carousel.querySelector('.prev-cell');
-    var nextCell = carousel.querySelector('.next-cell');
-    var cellWidth = carousel.querySelector('.ss-carousel-cell').clientWidth;
+  nextCell.addEventListener("click", scrollToNextCell);
+  prevCell.addEventListener("click", scrollToPrevCell);
 
-    nextCell.addEventListener('click', scrollToNextCell);
-    prevCell.addEventListener('click', scrollToPrevCell);
-
-    function scrollToNextCell() {
-        if (ssCarouselInner.scrollLeft < (ssCarouselInner.scrollWidth - cellWidth)) {
-            // The scroll position is not at the beginning of last item
-            ssCarouselInner.scrollBy({
-                left: cellWidth,
-                top: 0,
-                behavior: 'smooth'
-            });
-        } else {
-            // Last item reached. Go back to first item by setting scroll position to 0
-            ssCarouselInner.scrollTo({
-                left: 0,
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-    }
-
-    function scrollToPrevCell() {
-        if (ssCarouselInner.scrollLeft != 0) {
-            // The scroll position is not at the beginning of first item
-            ssCarouselInner.scrollBy({
-                left: -cellWidth,
-                top: 0,
-                behavior: 'smooth'
-            });
-        } else {
-            // This is the first item. Go to last item by setting scroll position to ssCarouselInner width
-            ssCarouselInner.scrollTo({
-                left: ssCarouselInner.scrollWidth,
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-    }
-
-    if(isTouchDevice()===false) {
-
-        // Hide Scrollbar
-        ssCarouselInner.classList.add('hide-scrollbar');
-
-        // Touchswipe
-        $(ssCarouselInner).swipe({
-            swipeLeft: function(event, direction, distance, duration, fingerCount) {
-                ssCarouselInner.scrollBy({
-                    left: cellWidth,
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            },
-            swipeRight: function() {
-                ssCarouselInner.scrollBy({
-                    left: -cellWidth,
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            }
-        });
-
+  function scrollToNextCell() {
+    if (ssCarouselInner.scrollLeft < ssCarouselInner.scrollWidth - cellWidth) {
+      // The scroll position is not at the beginning of last item
+      ssCarouselInner.scrollBy({
+        left: cellWidth,
+        top: 0,
+        behavior: "smooth"
+      });
     } else {
+      // Last item reached. Go back to first item by setting scroll position to 0
+      ssCarouselInner.scrollTo({
+        left: 0,
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+  }
 
-        // Show Scrollbar
-        ssCarouselInner.classList.remove('hide-scrollbar');
+  function scrollToPrevCell() {
+    if (ssCarouselInner.scrollLeft != 0) {
+      // The scroll position is not at the beginning of first item
+      ssCarouselInner.scrollBy({
+        left: -cellWidth,
+        top: 0,
+        behavior: "smooth"
+      });
+    } else {
+      // This is the first item. Go to last item by setting scroll position to ssCarouselInner width
+      ssCarouselInner.scrollTo({
+        left: ssCarouselInner.scrollWidth,
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+  }
 
-    };
+  if (isTouchDevice() === false) {
+    // Hide Scrollbar
+    ssCarouselInner.classList.add("hide-scrollbar");
 
+    // Touchswipe
+    $(ssCarouselInner).swipe({
+      swipeLeft: function (event, direction, distance, duration, fingerCount) {
+        ssCarouselInner.scrollBy({
+          left: cellWidth,
+          top: 0,
+          behavior: "smooth"
+        });
+      },
+      swipeRight: function () {
+        ssCarouselInner.scrollBy({
+          left: -cellWidth,
+          top: 0,
+          behavior: "smooth"
+        });
+      }
+    });
+  } else {
+    // Show Scrollbar
+    ssCarouselInner.classList.remove("hide-scrollbar");
+  }
 });
 
 </script>
