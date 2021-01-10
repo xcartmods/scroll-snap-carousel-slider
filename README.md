@@ -2,7 +2,7 @@
 
 Doesn't get much simpler.
 
-Uses TouchSwipe on desktops (~5k gzipped).
+Uses jQuery TouchSwipe on desktops (~5k gzipped).
 
 https://xcartmods.com/ss/
 
