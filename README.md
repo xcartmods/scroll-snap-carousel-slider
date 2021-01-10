@@ -2,6 +2,7 @@
 
 - Doesn't get much simpler
 - Left and right navigation support
+- Swipe support on desktops
 - Horizontal scrollbar hidden on desktops
 
 Uses `jQuery TouchSwipe` on desktops (~5k gzipped).
