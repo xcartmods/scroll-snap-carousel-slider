@@ -1,6 +1,8 @@
 # Scroll Snap Carousel / Slider
 
-Doesn't get much simpler.
+-Doesn't get much simpler.
+-Left and right navigation support.
+-Horizontal scrollbar hidden on desktops.
 
 Uses `jQuery TouchSwipe` on desktops (~5k gzipped).
 
