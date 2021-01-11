@@ -12,9 +12,13 @@
 
 /* Bootstrap */
 
-.container { max-width: 1366px; }
+.container {
+  max-width: 1366px;
+}
 
-.card:hover { border-color: #333; }
+.card:hover {
+  border-color: #333;
+}
 
 .bg-cover-center {
   background-position: center center !important;
@@ -64,100 +68,114 @@
 /* Start */
 
 .ss-carousel {
-    max-width: 100%;
-    padding: 1rem;
-    margin: 0 0 1rem 0;
-    text-align: center;
-    position: relative;
+  max-width: 100%;
+  padding: 1rem;
+  margin: 0 0 1rem 0;
+  text-align: center;
+  position: relative;
 }
 
 .ss-carousel .ss-carousel-inner {
-    overflow-x: scroll;
-    display: flex;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
+  overflow-x: scroll;
+  display: flex;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
 }
 
 .ss-carousel .ss-carousel-cell {
-    min-width: 25%;
-    scroll-snap-align: start; /* start | center | end */
-    background-color: #fff;
-    margin: 1rem 0;
-    padding: 0 1rem;
+  min-width: 25%;
+  scroll-snap-align: start; /* start | center | end */
+  background-color: #fff;
+  margin: 1rem 0;
+  padding: 0 1rem;
 }
 
 .ss-carousel .prev-cell,
 .ss-carousel .next-cell {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%); 
-    z-index: 2;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-	font-size: 0.85rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 0.85rem;
 }
 
 .ss-carousel .prev-cell {
-    left: 12px;
+  left: 12px;
 }
 
 .ss-carousel .next-cell {
-    right: 12px;
+  right: 12px;
 }
 
 @media screen and (min-width: 1200px) {
-    .ss-carousel .ss-carousel-cell:hover { cursor: grab; }
+  .ss-carousel .ss-carousel-cell:hover {
+    cursor: grab;
+  }
 }
 
 @media screen and (min-width: 992px) {
-    .ss-carousel .ss-carousel-cell { min-width: 25%; }
+  .ss-carousel .ss-carousel-cell {
+    min-width: 25%;
+  }
 }
 
 @media screen and (max-width: 991px) {
-    .ss-carousel .ss-carousel-cell { min-width: 33.33%; }
+  .ss-carousel .ss-carousel-cell {
+    min-width: 33.33%;
+  }
 }
 
 @media screen and (max-width: 767px) {
-    .ss-carousel .ss-carousel-cell { min-width: 50%; }
+  .ss-carousel .ss-carousel-cell {
+    min-width: 50%;
+  }
 }
 
 @media screen and (max-width: 575px) {
-    .ss-carousel .ss-carousel-cell { min-width: 50%; }
+  .ss-carousel .ss-carousel-cell {
+    min-width: 50%;
+  }
 }
 
 @media screen and (max-width: 400px) {
-    .ss-carousel .ss-carousel-cell { min-width: 100%; }
+  .ss-carousel .ss-carousel-cell {
+    min-width: 100%;
+  }
 }
 
 /* Slider */
-    
+
 .ss-carousel.ss-slider .ss-carousel-cell {
-    min-width: 100% !important;
-    padding: 0;
+  min-width: 100% !important;
+  padding: 0;
 }
 
 .ss-carousel.ss-slider .prev-cell {
-    border-radius: 0 0.5rem 0.5rem 0;
-	font-size: 1rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  font-size: 1rem;
 }
 
 .ss-carousel.ss-slider .next-cell {
-    border-radius: 0.5rem 0 0 0.5rem;
-	font-size: 1rem;
+  border-radius: 0.5rem 0 0 0.5rem;
+  font-size: 1rem;
 }
 
 .ss-carousel.ss-slider .prev-cell {
-    left: 16px;
+  left: 16px;
 }
 
 .ss-carousel.ss-slider .next-cell {
-    right: 16px;
+  right: 16px;
 }
 
 /* Hide Scrollbar */
 
-.ss-carousel .ss-carousel-inner.hide-scrollbar { overflow-x: hidden; }
+.ss-carousel .ss-carousel-inner.hide-scrollbar {
+  overflow-x: hidden;
+}
 
 </style>
 
